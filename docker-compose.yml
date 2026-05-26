@@ -1,0 +1,26 @@
+version: '3.9'
+services:
+  todo-api:
+    build: .
+    ports:
+      - '5000:5000'
+    volumes:
+      - ./data:/data
+    environment:
+      - DB_PATH=/data/tasks.db
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - '9090:9090'
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    depends_on:
+      - todo-api
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - '3000:3000'
+    depends_on:
+      - prometheus

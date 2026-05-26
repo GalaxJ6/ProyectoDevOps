@@ -22,6 +22,19 @@ python src/app.py
 
 La API corre en `http://localhost:5000`.
 
+## Desarrollo
+
+```bash
+pip install -r requirements-dev.txt
+pytest
+```
+
+## Observabilidad
+
+- Healthcheck: `GET /health`
+- Métricas Prometheus: `GET /metrics`
+- Logs estructurados en JSON
+
 ## Qué falta (su trabajo)
 
 TODO lo relacionado con DevOps. Partiendo de esta app, deben implementar:
