@@ -1,4 +1,4 @@
 -r requirements.txt
-pytest==7.4.0
-flake8==6.1.0
-pip-audit==2.10.0
+pytest>=9.0.3
+flake8
+pip-audit
