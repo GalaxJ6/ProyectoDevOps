@@ -1,14 +1,41 @@
 # Pipeline CI/CD
 
-El pipeline de GitHub Actions está en `.github/workflows/ci-cd.yml` y realiza lo siguiente:
+## Qué hace
+- Ejecuta linting con `flake8`.
+- Ejecuta tests con `pytest`.
+- Audita dependencias con `pip-audit`.
+- Construye imagen Docker con `docker/build-push-action`.
+- Empaqueta imagen como TAR y sube artefactos.
 
-1. `checkout` del código fuente
-2. configuración de Python 3.11
-3. instalación de dependencias de runtime y dev
-4. auditoría de dependencias con `pip-audit`
-5. linting con `flake8`
-6. ejecución de pruebas unitarias con `pytest`
-7. construcción de la imagen Docker
-8. generación de artefactos de build en `reports/`
+## Requisitos para correr
+- Docker instalado.
+- GitHub Actions habilitado en el repositorio.
+- Archivo `.github/workflows/ci-cd.yml` presente.
+- `requirements-dev.txt` con `pytest`, `flake8`, `pip-audit`.
 
-Esto permite validar la aplicación, generar reportes y construir una imagen versionada en cada push o PR.
+## Cómo validar localmente
+1. Instalar dependencias de desarrollo:
+```bash
+pip install -r requirements-dev.txt
+```
+2. Correr lint:
+```bash
+python -m flake8 src tests
+```
+3. Correr tests:
+```bash
+python -m pytest tests/ -v
+```
+4. Correr auditoría:
+```bash
+python -m pip_audit
+```
+5. Construir Docker local:
+```bash
+docker build -t todo-api:latest .
+```
+
+## Artefactos generados
+- `reports/junit.xml`
+- `reports/todo-api-<sha>.tar`
+- artifacts de GitHub Actions (`test-reports`, `docker-image`).

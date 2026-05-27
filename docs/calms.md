@@ -1,9 +1,23 @@
 # CALMS
 
-Este proyecto aplica el enfoque CALMS de la siguiente forma:
+## Cultura
+- Trabajo colaborativo en ramas `feature/*` y PRs.
+- Revisiones obligatorias para `main`.
 
-- Cultura: trabajo colaborativo, código versionado y revisiones en PR.
-- Automatización: pipeline CI/CD, pruebas unitarias, linting y build de imagen Docker.
-- Lean: documentación clara, métricas y salud para detectar problemas temprano.
-- Medición: métricas Prometheus, logs estructurados y reportes de pruebas.
-- Sharing: artefactos y documentación compartida en el repositorio.
+## Automatización
+- CI/CD automático con GitHub Actions.
+- Build Docker reproducible y tests automatizados.
+
+## Lean
+- Evitar trabajo innecesario.
+- Mantener el pipeline corto: lint, tests, audit, build.
+
+## Medición
+- Métricas expuestas en `/metrics`.
+- Healthcheck en `/health`.
+- Logs estructurados para análisis y debugging.
+
+## Sharing
+- Documentación en `docs/`.
+- Configuraciones y comandos explícitos.
+- Artefactos reproducibles con Docker.

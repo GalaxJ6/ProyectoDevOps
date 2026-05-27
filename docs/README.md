@@ -1,11 +1,8 @@
-# Documentación del proyecto To-Do API
+# Documentación del proyecto
 
-Este repositorio incluye una API REST básica de tareas, plus la infraestructura DevOps necesaria para:
+Este directorio contiene documentación técnica del proyecto.
 
-- pruebas unitarias
-- containerización con Docker y Docker Compose
-- pipeline CI/CD con GitHub Actions
-- observabilidad con `/health`, `/metrics`, Prometheus y Grafana
-- seguridad con auditoría de dependencias y linting
-- manifolds Kubernetes para despliegue
-- documentación CALMS y flujos de rama
+- `pipeline.md` — definición del pipeline CI/CD y requisitos para correrlo.
+- `branching.md` — estrategia de ramas y reglas de control de cambios.
+- `observability.md` — observabilidad: logs JSON, `/health`, `/metrics`, Prometheus/Grafana.
+- `calms.md` — explicación de CALMS aplicada al proyecto.

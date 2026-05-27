@@ -1,4 +1,4 @@
-# To-Do API — Semilla para Trabajo Final DevOps
+﻿# To-Do API — Semilla para Trabajo Final DevOps
 
 API REST básica de gestión de tareas. **Este es el punto de partida** — su trabajo es construir todo el ecosistema DevOps alrededor.
 
@@ -22,35 +22,6 @@ python src/app.py
 
 La API corre en `http://localhost:5000`.
 
-## Desarrollo
-
-```bash
-pip install -r requirements-dev.txt
-pytest
-```
-
-## Seguridad - Auditoría
-
-Ejecutar auditoría completa de seguridad (linting, dependencias, secretos):
-
-```bash
-python security_audit.py
-```
-
-Esto genera:
-- Análisis de linting con `flake8`
-- Auditoría de dependencias con `pip-audit`
-- Detección de secretos
-- Reporte JSON: `security-audit-report.json`
-
-Documentación completa: [`docs/SECURITY.md`](docs/SECURITY.md)
-
-## Observabilidad
-
-- Healthcheck: `GET /health`
-- Métricas Prometheus: `GET /metrics`
-- Logs estructurados en JSON
-
 ## Qué falta (su trabajo)
 
 TODO lo relacionado con DevOps. Partiendo de esta app, deben implementar:
@@ -64,7 +35,7 @@ TODO lo relacionado con DevOps. Partiendo de esta app, deben implementar:
 7. **Documentación** — `docs/` con pipeline, branching, observabilidad, CALMS
 8. **Artefactos** — Imagen versionada, reportes de build
 
-Lean el documento del trabajo final para los detalles completos de cada requisito.
+Ver `docs/README.md` para la documentación técnica del proyecto.
 
 ## Stack
 
