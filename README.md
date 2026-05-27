@@ -29,6 +29,22 @@ pip install -r requirements-dev.txt
 pytest
 ```
 
+## Seguridad - Auditoría
+
+Ejecutar auditoría completa de seguridad (linting, dependencias, secretos):
+
+```bash
+python security_audit.py
+```
+
+Esto genera:
+- Análisis de linting con `flake8`
+- Auditoría de dependencias con `pip-audit`
+- Detección de secretos
+- Reporte JSON: `security-audit-report.json`
+
+Documentación completa: [`docs/SECURITY.md`](docs/SECURITY.md)
+
 ## Observabilidad
 
 - Healthcheck: `GET /health`
