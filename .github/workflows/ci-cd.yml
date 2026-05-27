@@ -44,7 +44,7 @@ jobs:
         continue-on-error: true
         run: |
           echo "Auditing dependencies..."
-          python -m pip_audit
+          python -m pip_audit -r requirements-dev.txt
 
       - name: Run unit tests
         run: |
@@ -57,7 +57,7 @@ jobs:
         with:
           name: test-reports
           path: reports/junit.xml
-          retid-days: 30
+          retention-days: 30
 
   build:
     needs: test
@@ -94,4 +94,4 @@ jobs:
         with:
           name: docker-image
           path: reports/todo-api-*.tar
-          retid-days: 30
+          retention-days: 30
