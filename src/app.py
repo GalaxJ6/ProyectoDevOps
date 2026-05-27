@@ -146,7 +146,7 @@ def list_tasks():
 @app.route("/tasks", methods=["POST"])
 def create_task():
     data = request.get_json()
-    
+
     # Validate request data
     if not data or "title" not in data:
         app.logger.warning(
@@ -154,17 +154,17 @@ def create_task():
             extra={"event": "validation_error", "reason": "missing_title"},
         )
         return jsonify({"error": "El campo 'title' es obligatorio"}), 400
-    
+
     title = data["title"].strip() if isinstance(data["title"], str) else None
     description = data.get("description", "").strip() if isinstance(data.get("description"), str) else ""
-    
+
     # Validate title constraints
     if not title or len(title) < 1:
         return jsonify({"error": "El campo 'title' no puede estar vacío"}), 400
-    
+
     if len(title) > 255:
         return jsonify({"error": "El campo 'title' no puede exceder 255 caracteres"}), 400
-    
+
     if len(description) > 1000:
         return jsonify({"error": "El campo 'description' no puede exceder 1000 caracteres"}), 400
 
@@ -178,7 +178,7 @@ def create_task():
         conn.commit()
         task = conn.execute("SELECT * FROM tasks WHERE id = ?", (task_id,)).fetchone()
         conn.close()
-        
+
         app.logger.info(
             "task_created",
             extra={"event": "task_created", "task_id": task_id},
@@ -223,13 +223,13 @@ def update_task(task_id):
         title = data.get("title", task["title"])
         description = data.get("description", task["description"])
         completed = data.get("completed", task["completed"])
-        
+
         # Validate constraints
         if isinstance(title, str):
             title = title.strip()
             if not title or len(title) > 255:
                 return jsonify({"error": "El campo 'title' debe tener entre 1 y 255 caracteres"}), 400
-        
+
         if isinstance(description, str) and len(description) > 1000:
             return jsonify({"error": "El campo 'description' no puede exceder 1000 caracteres"}), 400
 
@@ -240,7 +240,7 @@ def update_task(task_id):
         conn.commit()
         task = conn.execute("SELECT * FROM tasks WHERE id = ?", (task_id,)).fetchone()
         conn.close()
-        
+
         app.logger.info(
             "task_updated",
             extra={"event": "task_updated", "task_id": task_id},
